@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Welcome, {{ username }}</h2>
+        <form method="POST">
+            <textarea name="content" placeholder="Write a new post..." required></textarea>
+            <button type="submit" class="button">Post</button>
+        </form>
+        <h3>All Posts</h3>
+        <ul class="posts">
+            {% for post in posts %}
+                <li>
+                    <p>{{ post[1] }}</p>
+                    <p>Likes: {{ post[2] }}</p>
+                    <a href="/like/{{ post[0] }}" class="link">Like</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <a href="/profile" class="button">Edit Profile</a>
+        <a href="/logout" class="button">Logout</a>
+    </div>
+</body>
+</html>
